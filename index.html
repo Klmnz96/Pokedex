@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pokedex</title>
+
+    <link rel="icon" type="image/svg+xml" href="./assets/icons/logo.svg" />
     <link rel="stylesheet" href="./styles/standart.css" />
     <link rel="stylesheet" href="./styles/fonts.css" />
     <link rel="stylesheet" href="style.css" />
@@ -13,10 +15,62 @@
     <a href="#main" class="visually-hidden">Skip to main content</a>
 
     <!--Header-->
+    <header class="site-header">
+      <div class="header-inner container">
+        <div class="logo">
+          <img src="./assets/icons/logo.svg" alt="Pokedex logo" />
+          <h1 class="logo-text"><span>KF</span>Pokedex</h1>
+        </div>
+        <input
+          type="text"
+          data-id="search-input"
+          aria-label="Search Pokemon"
+          placeholder="Search Pokemon"
+          class="search-input"
+        />
+        <button data-id="search-button" class="search-button">Search</button>
+      </div>
+    </header>
 
     <!--Main-->
+    <main id="main" data-id="content" class="container">
+      <ul class="pokemon-grid">
+        <!--li wird per JS eingebunden-->
+      </ul>
+      <dialog data-id="dialog" class="pokemon-dialog"></dialog>
+      <button data-id="load-more-button" class="load-more-btn">
+        Load more...
+      </button>
+    </main>
 
     <!--Footer-->
+    <footer class="site-footer">
+      <div class="footer-inner container">
+        <div class="footer-credit">
+          <p class="footer-credit-text">
+            &copy; 2026 Fabian Klemenz
+            <a
+              href="https://github.com/Klmnz96"
+              target="_blank"
+              rel="noopener noreferrer"
+              >GitHub</a
+            >
+          </p>
+        </div>
+        <div class="footer-api">
+          <img src="./assets/icons/logo.svg" alt="Pokeball logo" />
+          <p class="footer-api-text">
+            Pokemon data from
+            <a
+              href="https://pokeapi.co"
+              target="_blank"
+              rel="noopener noreferrer"
+              >PokeAPI</a
+            >
+          </p>
+        </div>
+      </div>
+    </footer>
     <script src="./script/template.js"></script>
     <script src="script.js"></script>
   </body>
