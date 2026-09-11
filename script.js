@@ -1,3 +1,8 @@
+function init() {
+  scrollHeader();
+  //TODO: fetchPokemon()
+}
+
 function scrollHeader() {
   const header = document.querySelector(".site-header");
   if (!header) return;
@@ -7,3 +12,5 @@ function scrollHeader() {
   update();
   window.addEventListener("scroll", update, { passive: true });
 }
+
+init();
