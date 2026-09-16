@@ -17,7 +17,17 @@ async function fetchPokemon() {
     pokemonList.push(detailData);
   }
 
-  console.log(pokemonList);
+  renderPokemonList(pokemonList);
+}
+
+function renderPokemonList(pokemonList) {
+  let pokemonGridHtml = "";
+
+  for (const pokemon of pokemonList) {
+    pokemonGridHtml += getPokemonCardTemplate(pokemon);
+  }
+
+  document.querySelector(".pokemon-grid").innerHTML = pokemonGridHtml;
 }
 
 function scrollHeader() {
