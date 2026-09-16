@@ -1,6 +1,23 @@
 function init() {
   scrollHeader();
-  //TODO: fetchPokemon()
+  fetchPokemon();
+}
+
+async function fetchPokemon() {
+  const listResponse = await fetch(
+    "https://pokeapi.co/api/v2/pokemon?limit=40&offset=0",
+  );
+  const listData = await listResponse.json();
+
+  const pokemonList = [];
+
+  for (const pokemonListItem of listData.results) {
+    const detailResponse = await fetch(pokemonListItem.url);
+    const detailData = await detailResponse.json();
+    pokemonList.push(detailData);
+  }
+
+  console.log(pokemonList);
 }
 
 function scrollHeader() {
