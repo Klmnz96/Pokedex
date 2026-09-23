@@ -47,6 +47,27 @@ function renderPokemonList(pokemonList) {
   }
 
   pokemonGrid.innerHTML = pokemonGridHtml;
+  setupPokemonDialog();
+}
+
+function setupPokemonDialog() {
+  const cardButtons = document.querySelectorAll('[data-id="card"]');
+
+  for (let i = 0; i < cardButtons.length; i++) {
+    cardButtons[i].addEventListener("click", function () {
+      const clickedPokemon = pokemonList[i];
+
+      const dialog = document.querySelector('[data-id="dialog"]');
+      dialog.innerHTML = getPokemonDialogTemplate(clickedPokemon);
+      dialog.showModal();
+      const closeDialogButton = document.querySelector(
+        '[data-id="close-dialog-button"]',
+      );
+      closeDialogButton.addEventListener("click", function () {
+        dialog.close();
+      });
+    });
+  }
 }
 
 function scrollHeader() {
