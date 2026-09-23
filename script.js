@@ -1,14 +1,16 @@
 let pokemonList = [];
+let currentOffset = 0;
 
 function init() {
   scrollHeader();
-  fetchPokemon();
+  fetchPokemon(currentOffset);
   searchPokemon();
+  loadMorePokemon();
 }
 
-async function fetchPokemon() {
+async function fetchPokemon(offset) {
   const listResponse = await fetch(
-    "https://pokeapi.co/api/v2/pokemon?limit=40&offset=0",
+    `https://pokeapi.co/api/v2/pokemon?limit=40&offset=${offset}`,
   );
   const listData = await listResponse.json();
 
@@ -18,7 +20,16 @@ async function fetchPokemon() {
     pokemonList.push(detailData);
   }
 
+  currentOffset += 40;
   renderPokemonList(pokemonList);
+}
+
+async function loadMorePokemon() {
+  const loadMoreButton = document.querySelector(".load-more-btn");
+
+  loadMoreButton.addEventListener("click", function () {
+    fetchPokemon(currentOffset);
+  });
 }
 
 function renderPokemonList(pokemonList) {
