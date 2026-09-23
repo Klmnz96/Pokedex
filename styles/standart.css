@@ -26,6 +26,14 @@
   --type-electric: #f8d030;
   --type-ground: #bba569;
   --type-fairy: #ee99ac;
+  --type-fighting: #c22e28;
+  --type-psychic: #9b59b6;
+  --type-rock: #b8a038;
+  --type-steel: #b8b8d0;
+  --type-ghost: #705898;
+  --type-ice: #98d8d8;
+  --type-dragon: #7038f8;
+  --type-dark: #705848;
 
   /* Schrift */
   --font-display: "Fredoka";
