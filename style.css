@@ -44,7 +44,7 @@
 .logo-text span {
   font-weight: 700;
   letter-spacing: -1px;
-  color: var(--color-text);
+  color: var(--type-dragon);
 }
 
 .search-bar {
@@ -197,6 +197,30 @@
 }
 .fairy {
   background: var(--type-fairy);
+}
+.fighting {
+  background: var(--type-fighting);
+}
+.psychic {
+  background: var(--type-psychic);
+}
+.rock {
+  background: var(--type-rock);
+}
+.steel {
+  background: var(--type-steel);
+}
+.ghost {
+  background: var(--type-ghost);
+}
+.ice {
+  background: var(--type-ice);
+}
+.dragon {
+  background: var(--type-dragon);
+}
+.dark {
+  background: var(--type-dark);
 }
 
 .pokemon-grid {
