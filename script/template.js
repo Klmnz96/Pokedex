@@ -25,12 +25,19 @@ function getPokemonCardTemplate(pokemon) {
 }
 
 function getPokemonDialogTemplate(pokemon) {
+  const mainType = pokemon.types[0].type.name;
+
   return `
   <div data-id="overlay-pokemon-name">
   <button data-id="close-dialog-button">Close</button>
-  <h2 class="pokemon-name">${pokemon.name}</h2>
+  <div class="dialog-header ${mainType}">
   <img src="./assets/icons/pokeball-dark.svg" alt="" class="dialog-pokeball-bg" />
   <img data-id="dialog-image" src="${pokemon.sprites.other["official-artwork"].front_default}" alt="${pokemon.name}" />
+  <h2 class="pokemon-name">${pokemon.name}</h2>
+  </div>
+  <div class="dialog-details">
+  <!-- Stats/Tabs -->
+  </div>
   </div>
   `;
 }
