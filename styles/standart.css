@@ -14,6 +14,7 @@
   --color-border: #e2e5ec;
   --color-accent: #ee1515; /* klassisches Pokedex-Rot, für Buttons/Akzente */
   --color-focus: #3b82f6; /* gut sichtbarer Fokus-Ring, bewusst blau statt rot (Kontrast/Lesbarkeit) */
+  --color-gold: #d4af37;
 
   /* Typ-Farben (für Karten-Hintergrund und Typ-Icons) */
   --type-grass: #78c850;
@@ -41,7 +42,7 @@
 
   /* Schriftgrößen. Bewusst kompakt: kein Hero-Bereich, nur Karten-Titel und
      Modal-Überschriften, deshalb deutlich kleiner als bei einer Landingpage */
-  --text-sm: 0.9375rem; /* 15px */
+  --text-sm: 1rem; /* 15px */
   --text-base: clamp(1.0625rem, 1rem + 0.3vw, 1.125rem); /* 17–18px Fließtext */
   --text-lg: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
   --h3: clamp(1rem, 0.95rem + 0.4vw, 1.25rem); /* ~16–20px, Karten-Namen */
