@@ -56,9 +56,11 @@ function setupPokemonDialog() {
   for (let i = 0; i < cardButtons.length; i++) {
     cardButtons[i].addEventListener("click", function () {
       const clickedPokemon = pokemonList[i];
+      const mainType = clickedPokemon.types[0].type.name;
 
       const dialog = document.querySelector('[data-id="dialog"]');
       dialog.innerHTML = getPokemonDialogTemplate(clickedPokemon);
+      dialog.className = "pokemon-dialog " + mainType;
       dialog.showModal();
       const closeDialogButton = document.querySelector(
         '[data-id="close-dialog-button"]',
