@@ -29,6 +29,7 @@ function getPokemonDialogTemplate(pokemon) {
   <div data-id="overlay-pokemon-name">
   <button data-id="close-dialog-button">Close</button>
   <h2 class="pokemon-name">${pokemon.name}</h2>
+  <img src="./assets/icons/pokeball-dark.svg" alt="" class="dialog-pokeball-bg" />
   <img data-id="dialog-image" src="${pokemon.sprites.other["official-artwork"].front_default}" alt="${pokemon.name}" />
   </div>
   `;
