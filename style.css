@@ -232,7 +232,28 @@
 }
 
 .pokemon-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  background: var(--color-surface);
+  border: 6px solid var(--color-gold);
+  border-radius: var(--radius);
+  padding: 0;
+  width: min(90vw, 420px);
+  overflow: hidden;
+}
+
+.dialog-header {
   position: relative;
+  overflow: hidden;
+  min-height: 380px;
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .dialog-pokeball-bg {
@@ -240,13 +261,39 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 70%;
+  width: 90%;
   z-index: 0;
 }
 
 img[data-id="dialog-image"] {
   position: relative;
   z-index: 1;
+  width: 60%;
+  max-width: 250px;
+  height: auto;
+}
+
+[data-id="close-dialog-button"] {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.3);
+  color: var(--color-surface);
+  border-radius: 999px;
+  padding: var(--space-3xs) var(--space-xs);
+}
+
+.dialog-header .pokemon-name {
+  position: relative;
+  z-index: 1;
+  font-size: var(--h1);
+  color: var(--color-surface);
+  margin-top: var(--space-sm);
+}
+
+.dialog-details {
+  padding: var(--space-md);
 }
 
 /* Footer */
