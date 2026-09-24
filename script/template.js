@@ -26,6 +26,11 @@ function getPokemonCardTemplate(pokemon) {
 
 function getPokemonDialogTemplate(pokemon) {
   const mainType = pokemon.types[0].type.name;
+  let abilitiesList = [];
+  for (const abilityEntry of pokemon.abilities) {
+    abilitiesList.push(abilityEntry.ability.name);
+  }
+  const abilitiesText = abilitiesList.join(", ");
 
   return `
   <div data-id="overlay-pokemon-name">
@@ -36,7 +41,22 @@ function getPokemonDialogTemplate(pokemon) {
   <h2 class="pokemon-name">${pokemon.name}</h2>
   </div>
   <div class="dialog-details">
-  <!-- Stats/Tabs -->
+  <div class="detail-row">
+  <span class="detail-label">Height:</span>
+  <span class="detail-value">${pokemon.height * 10} cm</span>
+  </div>
+  <div class="detail-row">
+  <span class="detail-label">Weight:</span>
+  <span class="detail-value">${pokemon.weight / 10} kg</span>
+  </div>
+  <div class="detail-row">
+  <span class="detail-label">Base Experience:</span>
+  <span class="detail-value">${pokemon.base_experience}</span>
+  </div>
+  <div class="detail-row">
+  <span class="detail-label">Abilities:</span>
+  <span class="detail-value">${abilitiesText}</span>
+  </div>
   </div>
   </div>
   `;
