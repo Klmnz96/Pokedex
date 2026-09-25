@@ -91,9 +91,11 @@ function setupDialogTabs() {
     tabButtons[i].addEventListener("click", function () {
       for (let j = 0; j < dialogTabs.length; j++) {
         dialogTabs[j].classList.add("hidden");
+        tabButtons[j].classList.remove("active");
       }
 
       dialogTabs[i].classList.remove("hidden");
+      tabButtons[i].classList.add("active");
     });
   }
 }
