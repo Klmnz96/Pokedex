@@ -42,7 +42,7 @@ function getPokemonDialogTemplate(pokemon) {
   </div>
 
   <div class="dialog-tabs">
-  <button class="tab-btn" aria-label="show main info">Main</button>
+  <button class="tab-btn active" aria-label="show main info">Main</button>
   <button class="tab-btn" aria-label="show stats">Stats</button>
   <button class="tab-btn" aria-label="show evolution chain">Evo chain</button>
   </div>
