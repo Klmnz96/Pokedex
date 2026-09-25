@@ -296,6 +296,10 @@ img[data-id="dialog-image"] {
   padding: var(--space-md);
 }
 
+.hidden {
+  display: none;
+}
+
 /* Footer */
 .site-footer {
   background: var(--color-accent);
