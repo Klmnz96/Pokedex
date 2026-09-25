@@ -300,6 +300,51 @@ img[data-id="dialog-image"] {
   display: none;
 }
 
+.dialog-tabs {
+  display: flex;
+  justify-content: space-around;
+  padding: var(--space-sm) var(--space-md) 0;
+  border-bottom: var(--border);
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-2xs) var(--space-xs);
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  transition: color var(--transition);
+}
+
+.tab-btn:hover {
+  color: var(--color-gold);
+  text-decoration: underline;
+}
+
+.tab-btn.active {
+  color: var(--color-text);
+  border-bottom: 3px solid var(--color-gold);
+}
+
+.detail-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: var(--space-sm);
+  padding: var(--space-3xs) 0;
+}
+
+.detail-label {
+  color: var(--color-text-muted);
+}
+
+.detail-value {
+  color: var(--color-text);
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
 /* Footer */
 .site-footer {
   background: var(--color-accent);
