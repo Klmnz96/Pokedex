@@ -40,7 +40,14 @@ function getPokemonDialogTemplate(pokemon) {
   <img data-id="dialog-image" src="${pokemon.sprites.other["official-artwork"].front_default}" alt="${pokemon.name}" />
   <h2 class="pokemon-name">${pokemon.name}</h2>
   </div>
-  <div class="dialog-details">
+
+  <div class="dialog-tabs">
+  <button class="tab-btn" aria-label="show main info">Main</button>
+  <button class="tab-btn" aria-label="show stats">Stats</button>
+  <button class="tab-btn" aria-label="show evolution chain">Evo chain</button>
+  </div>
+
+  <div class="dialog-details tab-content">
   <div class="detail-row">
   <span class="detail-label">Height:</span>
   <span class="detail-value">${pokemon.height * 10} cm</span>
@@ -58,6 +65,15 @@ function getPokemonDialogTemplate(pokemon) {
   <span class="detail-value">${abilitiesText}</span>
   </div>
   </div>
+
+  <div class="stats-tab tab-content hidden">
+  Stats coming soon
+  </div>
+
+  <div class="evo-chain-tab tab-content hidden">
+  Evo chain coming soon
+  </div>
+
   </div>
   `;
 }
