@@ -62,6 +62,7 @@ function setupPokemonDialog() {
       dialog.innerHTML = getPokemonDialogTemplate(clickedPokemon);
       dialog.className = "pokemon-dialog";
       dialog.showModal();
+      setupDialogTabs();
       const closeDialogButton = document.querySelector(
         '[data-id="close-dialog-button"]',
       );
@@ -80,6 +81,21 @@ function closeDialogOnOutsideClick() {
       dialog.close();
     }
   });
+}
+
+function setupDialogTabs() {
+  const tabButtons = document.querySelectorAll(".tab-btn");
+  const dialogTabs = document.querySelectorAll(".tab-content");
+
+  for (let i = 0; i < tabButtons.length; i++) {
+    tabButtons[i].addEventListener("click", function () {
+      for (let j = 0; j < dialogTabs.length; j++) {
+        dialogTabs[j].classList.add("hidden");
+      }
+
+      dialogTabs[i].classList.remove("hidden");
+    });
+  }
 }
 
 function scrollHeader() {
