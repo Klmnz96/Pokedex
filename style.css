@@ -398,6 +398,23 @@ img[data-id="dialog-image"] {
   text-transform: capitalize;
 }
 
+.stats-tab .detail-row {
+  grid-template-columns: 140px 40px 1fr;
+  align-items: center;
+}
+
+.stat-bar {
+  height: 8px;
+  background: var(--color-border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.stat-bar-fill {
+  height: 100%;
+  background: var(--color-gold);
+}
+
 /* Footer */
 .site-footer {
   background: var(--color-accent);
