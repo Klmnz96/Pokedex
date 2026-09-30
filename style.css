@@ -428,6 +428,40 @@ img[data-id="dialog-image"] {
   text-transform: capitalize;
 }
 
+.evo-chain-tab {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: var(--space-lg);
+}
+
+.evo-stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3xs);
+}
+
+.evo-stage img {
+  width: 80px;
+}
+
+.evo-name {
+  font-size: var(--text-sm);
+  text-transform: capitalize;
+}
+
+.evo-stage + .evo-stage::before {
+  content: "→";
+  position: absolute;
+  right: 100%;
+  top: 32px;
+  transform: translateY(50%, -50%);
+  margin-right: calc(var(--space-lg) / 2);
+  color: var(--color-text-muted);
+}
+
 /* Footer */
 .site-footer {
   background: var(--color-accent);
