@@ -87,7 +87,7 @@ function getStatsTemplate(pokemon) {
     <span class="detail-label">${statEntry.stat.name}</span>
     <span class="detail-value">${statEntry.base_stat}</span>
     <div class="stat-bar">
-    <div class="stat-bar-fill" style="width: ${statEntry.base_stat}%"></div>
+    <div class="stat-bar-fill ${getStatBarClass(statEntry.base_stat)}" style="width: ${statEntry.base_stat}%"></div>
     </div>
     </div>
     `;
