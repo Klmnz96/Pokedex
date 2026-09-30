@@ -72,7 +72,7 @@ function getPokemonDialogTemplate(pokemon) {
   </div>
 
   <div class="evo-chain-tab tab-content hidden">
-  Evo chain coming soon
+  loading evolution chain ...
   </div>
 
   <div class="moves-tab tab-content hidden">
@@ -99,6 +99,15 @@ function getStatsTemplate(pokemon) {
   }
 
   return statsHtml;
+}
+
+function getEvolutionStageTemplate(stagePokemon) {
+  return `
+  <div class="evo-stage">
+  <img src="${stagePokemon.sprites.other["official-artwork"].front_default}" alt="${stagePokemon.name}"/>
+  <span class="evo-name">${stagePokemon.name}</span>
+  </div>
+  `;
 }
 
 function getMovesTemplate(pokemon) {
