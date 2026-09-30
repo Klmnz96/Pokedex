@@ -7,6 +7,7 @@ function init() {
   searchPokemon();
   loadMorePokemon();
   closeDialogOnOutsideClick();
+  unlockScrollOnDialogClose();
 }
 
 async function fetchPokemon(offset) {
@@ -77,6 +78,7 @@ function setupPokemonDialog() {
       dialog.innerHTML = getPokemonDialogTemplate(clickedPokemon);
       dialog.className = "pokemon-dialog";
       dialog.showModal();
+      document.body.classList.add("no-scroll");
       setupDialogTabs();
       const closeDialogButton = document.querySelector(
         '[data-id="close-dialog-button"]',
@@ -95,6 +97,14 @@ function closeDialogOnOutsideClick() {
     if (event.target === dialog) {
       dialog.close();
     }
+  });
+}
+
+function unlockScrollOnDialogClose() {
+  const dialog = document.querySelector('[data-id="dialog"]');
+
+  dialog.addEventListener("close", function () {
+    document.body.classList.remove("no-scroll");
   });
 }
 
