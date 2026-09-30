@@ -125,6 +125,13 @@ function setupDialogTabs() {
   }
 }
 
+function getStatBarClass(statValue) {
+  if (statValue < 50) {
+    return "stat-low";
+  }
+  return "stat-high";
+}
+
 function scrollHeader() {
   const header = document.querySelector(".site-header");
   if (!header) return;
