@@ -15,6 +15,8 @@
   --color-accent: #ee1515; /* klassisches Pokedex-Rot, für Buttons/Akzente */
   --color-focus: #3b82f6; /* gut sichtbarer Fokus-Ring, bewusst blau statt rot (Kontrast/Lesbarkeit) */
   --color-gold: #d4af37;
+  --stat-low: #f16e6e;
+  --stat-high: #4cc28a;
 
   /* Typ-Farben (für Karten-Hintergrund und Typ-Icons) */
   --type-grass: #78c850;
