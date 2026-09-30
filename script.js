@@ -36,6 +36,18 @@ async function loadMorePokemon() {
   });
 }
 
+async function fetchData(url) {
+  const response = await fetch(url);
+  const data = await response.json();
+  return data;
+}
+
+async function fetchEvolutionChain(pokemon) {
+  const speciesData = await fetchData(pokemon.species.url);
+  const evolutionData = await fetchData(speciesData.evolution_chain.url);
+  return evolutionData;
+}
+
 function setLoading(isLoading) {
   const loadingScreen = document.querySelector(".loading-screen");
   const loadMoreButton = document.querySelector(".load-more-btn");
@@ -78,6 +90,7 @@ function setupPokemonDialog() {
       dialog.innerHTML = getPokemonDialogTemplate(clickedPokemon);
       dialog.className = "pokemon-dialog";
       dialog.showModal();
+      fetchEvolutionChain(clickedPokemon).then(console.log);
       document.body.classList.add("no-scroll");
       setupDialogTabs();
       const closeDialogButton = document.querySelector(
