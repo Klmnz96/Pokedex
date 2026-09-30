@@ -412,7 +412,14 @@ img[data-id="dialog-image"] {
 
 .stat-bar-fill {
   height: 100%;
-  background: var(--color-gold);
+}
+
+.stat-bar-fill.stat-low {
+  background: var(--stat-low);
+}
+
+.stat-bar-fill.stat-high {
+  background: var(--stat-high);
 }
 
 /* Footer */
