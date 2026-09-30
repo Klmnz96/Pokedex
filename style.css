@@ -462,6 +462,14 @@ img[data-id="dialog-image"] {
   color: var(--color-text-muted);
 }
 
+.breeding-title {
+  margin-top: var(--space-sm);
+  padding-top: var(--space-sm);
+  border-top: var(--border);
+  font-size: var(--text-base);
+  margin-bottom: var(--space-2xs);
+}
+
 /* Footer */
 .site-footer {
   background: var(--color-accent);
