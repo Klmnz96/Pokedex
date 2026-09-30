@@ -65,6 +65,8 @@ function getPokemonDialogTemplate(pokemon) {
   <span class="detail-label">Abilities:</span>
   <span class="detail-value">${abilitiesText}</span>
   </div>
+  <h3 class="breeding-title">Breeding</h3>
+  <div class="breeding-details">Loading breeding info...</div>
   </div>
 
   <div class="stats-tab tab-content hidden">
@@ -99,6 +101,22 @@ function getStatsTemplate(pokemon) {
   }
 
   return statsHtml;
+}
+
+function getBreedingTemplate(speciesData) {
+  return `
+  <div class="detail-row">
+  <span class="detail-label">Gender: </span>
+  <span class="detail-value">${getGenderText(speciesData.gender_rate)}</span>
+  </div>
+  <div class="detail-row">
+  <span class="detail-label">Egg Groups: </span>
+  <span class="detail-value">${getEggGroupsText(speciesData.egg_groups)}</span>
+  </div>
+  <div class="detail-row">
+  <span class="detail-label">Egg Cycles: </span>
+  <span class="detail-value">${speciesData.hatch_counter}</span>
+  </div>`;
 }
 
 function getEvolutionStageTemplate(stagePokemon) {
