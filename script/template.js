@@ -67,7 +67,7 @@ function getPokemonDialogTemplate(pokemon) {
   </div>
 
   <div class="stats-tab tab-content hidden">
-  Stats coming soon
+  ${getStatsTemplate(pokemon)}
   </div>
 
   <div class="evo-chain-tab tab-content hidden">
@@ -76,4 +76,19 @@ function getPokemonDialogTemplate(pokemon) {
 
   </div>
   `;
+}
+
+function getStatsTemplate(pokemon) {
+  let statsHtml = "";
+
+  for (const statEntry of pokemon.stats) {
+    statsHtml += `
+    <div class="detail-row">
+    <span class="detail-label">${statEntry.stat.name}</span>
+    <span class="detail-value">${statEntry.base_stat}</span>
+    </div>
+    `;
+  }
+
+  return statsHtml;
 }
