@@ -344,14 +344,6 @@ img[data-id="dialog-image"] {
   }
 }
 
-.no-scroll {
-  overflow: hidden;
-}
-
-.hidden {
-  display: none;
-}
-
 .dialog-tabs {
   display: flex;
   justify-content: space-around;
@@ -422,6 +414,20 @@ img[data-id="dialog-image"] {
   background: var(--stat-high);
 }
 
+.moves-tab {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2xs);
+}
+
+.move-badge {
+  padding: var(--space-2xs) var(--space-xs);
+  background: var(--color-bg);
+  border-radius: 8px;
+  font-size: var(--text-sm);
+  text-transform: capitalize;
+}
+
 /* Footer */
 .site-footer {
   background: var(--color-accent);
@@ -462,4 +468,12 @@ img[data-id="dialog-image"] {
 .footer-api img {
   height: 28px;
   width: auto;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.hidden {
+  display: none;
 }
