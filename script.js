@@ -10,6 +10,7 @@ function init() {
 }
 
 async function fetchPokemon(offset) {
+  setLoading(true);
   const listResponse = await fetch(
     `https://pokeapi.co/api/v2/pokemon?limit=40&offset=${offset}`,
   );
@@ -23,6 +24,7 @@ async function fetchPokemon(offset) {
 
   currentOffset += 40;
   renderPokemonList(pokemonList);
+  setLoading(false);
 }
 
 async function loadMorePokemon() {
@@ -31,6 +33,19 @@ async function loadMorePokemon() {
   loadMoreButton.addEventListener("click", function () {
     fetchPokemon(currentOffset);
   });
+}
+
+function setLoading(isLoading) {
+  const loadingScreen = document.querySelector(".loading-screen");
+  const loadMoreButton = document.querySelector(".load-more-btn");
+
+  if (isLoading) {
+    loadingScreen.classList.remove("hidden");
+  } else {
+    loadingScreen.classList.add("hidden");
+  }
+
+  loadMoreButton.disabled = isLoading;
 }
 
 function renderPokemonList(pokemonList) {
