@@ -90,7 +90,7 @@ function setupPokemonDialog() {
       dialog.innerHTML = getPokemonDialogTemplate(clickedPokemon);
       dialog.className = "pokemon-dialog";
       dialog.showModal();
-      fetchEvolutionChain(clickedPokemon).then(console.log);
+      renderEvolutionChain(clickedPokemon);
       document.body.classList.add("no-scroll");
       setupDialogTabs();
       const closeDialogButton = document.querySelector(
@@ -143,6 +143,33 @@ function getStatBarClass(statValue) {
     return "stat-low";
   }
   return "stat-high";
+}
+
+function getEvolutionNames(evolutionData) {
+  let evolutionNames = [];
+  let currentStage = evolutionData.chain;
+
+  while (currentStage) {
+    evolutionNames.push(currentStage.species.name);
+    currentStage = currentStage.evolves_to[0];
+  }
+
+  return evolutionNames;
+}
+
+async function renderEvolutionChain(pokemon) {
+  const evolutionData = await fetchEvolutionChain(pokemon);
+  const evolutionNames = getEvolutionNames(evolutionData);
+  let evolutionHtml = "";
+
+  for (const name of evolutionNames) {
+    const stagePokemon = await fetchData(
+      `https://pokeapi.co/api/v2/pokemon/${name}`,
+    );
+    evolutionHtml += getEvolutionStageTemplate(stagePokemon);
+  }
+
+  document.querySelector(".evo-chain-tab").innerHTML = evolutionHtml;
 }
 
 function scrollHeader() {
