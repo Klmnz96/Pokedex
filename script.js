@@ -42,12 +42,6 @@ async function fetchData(url) {
   return data;
 }
 
-async function fetchEvolutionChain(pokemon) {
-  const speciesData = await fetchData(pokemon.species.url);
-  const evolutionData = await fetchData(speciesData.evolution_chain.url);
-  return evolutionData;
-}
-
 function setLoading(isLoading) {
   const loadingScreen = document.querySelector(".loading-screen");
   const loadMoreButton = document.querySelector(".load-more-btn");
@@ -90,7 +84,7 @@ function setupPokemonDialog() {
       dialog.innerHTML = getPokemonDialogTemplate(clickedPokemon);
       dialog.className = "pokemon-dialog";
       dialog.showModal();
-      renderEvolutionChain(clickedPokemon);
+      renderSpeciesDetails(clickedPokemon);
       document.body.classList.add("no-scroll");
       setupDialogTabs();
       const closeDialogButton = document.querySelector(
@@ -157,8 +151,8 @@ function getEvolutionNames(evolutionData) {
   return evolutionNames;
 }
 
-async function renderEvolutionChain(pokemon) {
-  const evolutionData = await fetchEvolutionChain(pokemon);
+async function renderEvolutionChain(speciesData) {
+  const evolutionData = await fetchData(speciesData.evolution_chain.url);
   const evolutionNames = getEvolutionNames(evolutionData);
   let evolutionHtml = "";
 
@@ -170,6 +164,32 @@ async function renderEvolutionChain(pokemon) {
   }
 
   document.querySelector(".evo-chain-tab").innerHTML = evolutionHtml;
+}
+
+async function renderSpeciesDetails(pokemon) {
+  const speciesData = await fetchData(pokemon.species.url);
+  document.querySelector(".breeding-details").innerHTML =
+    getBreedingTemplate(speciesData);
+  renderEvolutionChain(speciesData);
+}
+
+function getGenderText(genderRate) {
+  if (genderRate === -1) {
+    return "Genderless";
+  }
+
+  const femalePercent = (genderRate / 8) * 100;
+  const malePercent = 100 - femalePercent;
+  return `♂ ${malePercent}% ♀ ${femalePercent}%`;
+}
+
+function getEggGroupsText(eggGroups) {
+  let eggGroupNames = [];
+  for (const eggGroupEntry of eggGroups) {
+    eggGroupNames.push(eggGroupEntry.name);
+  }
+
+  return eggGroupNames.join(", ");
 }
 
 function scrollHeader() {
