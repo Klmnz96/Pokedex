@@ -45,6 +45,7 @@ function getPokemonDialogTemplate(pokemon) {
   <button class="tab-btn active" aria-label="show main info">Main</button>
   <button class="tab-btn" aria-label="show stats">Stats</button>
   <button class="tab-btn" aria-label="show evolution chain">Evo chain</button>
+  <button class="tab-btn" aria-label="show moves">Moves</button>
   </div>
 
   <div class="dialog-details tab-content">
@@ -74,6 +75,10 @@ function getPokemonDialogTemplate(pokemon) {
   Evo chain coming soon
   </div>
 
+  <div class="moves-tab tab-content hidden">
+  ${getMovesTemplate(pokemon)}
+  </div>
+
   </div>
   `;
 }
@@ -94,4 +99,14 @@ function getStatsTemplate(pokemon) {
   }
 
   return statsHtml;
+}
+
+function getMovesTemplate(pokemon) {
+  let movesHtml = "";
+
+  for (const moveEntry of pokemon.moves.slice(0, 10)) {
+    movesHtml += `<span class="move-badge">${moveEntry.move.name}</span>`;
+  }
+
+  return movesHtml;
 }
