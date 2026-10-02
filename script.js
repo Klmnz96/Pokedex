@@ -2,6 +2,7 @@ let pokemonList = [];
 let currentOffset = 0;
 let currentDialogIndex = 0;
 let displayedPokemonList = [];
+let fetchCache = {};
 
 function init() {
   scrollHeader();
@@ -39,8 +40,13 @@ async function loadMorePokemon() {
 }
 
 async function fetchData(url) {
+  if (fetchCache[url]) {
+    return fetchCache[url];
+  }
+
   const response = await fetch(url);
   const data = await response.json();
+  fetchCache[url] = data;
   return data;
 }
 
