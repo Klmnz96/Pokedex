@@ -1,5 +1,6 @@
 let pokemonList = [];
 let currentOffset = 0;
+let currentDialogIndex = 0;
 
 function init() {
   scrollHeader();
@@ -78,23 +79,33 @@ function setupPokemonDialog() {
 
   for (let i = 0; i < cardButtons.length; i++) {
     cardButtons[i].addEventListener("click", function () {
-      const clickedPokemon = pokemonList[i];
-
-      const dialog = document.querySelector('[data-id="dialog"]');
-      dialog.innerHTML = getPokemonDialogTemplate(clickedPokemon);
-      dialog.className = "pokemon-dialog";
-      dialog.showModal();
-      renderSpeciesDetails(clickedPokemon);
-      document.body.classList.add("no-scroll");
-      setupDialogTabs();
-      const closeDialogButton = document.querySelector(
-        '[data-id="close-dialog-button"]',
-      );
-      closeDialogButton.addEventListener("click", function () {
-        dialog.close();
-      });
+      openPokemonDialog(i);
     });
   }
+}
+
+function openPokemonDialog(index) {
+  currentDialogIndex = index;
+  const pokemon = pokemonList[index];
+  const dialog = document.querySelector('[data-id="dialog"]');
+
+  dialog.innerHTML = getPokemonDialogTemplate(pokemon);
+  dialog.className = "pokemon-dialog";
+  dialog.showModal();
+  renderSpeciesDetails(pokemon);
+  document.body.classList.add("no-scroll");
+  setupDialogTabs();
+  setupCloseDialogButton(dialog);
+}
+
+function setupCloseDialogButton(dialog) {
+  const closeDialogButton = document.querySelector(
+    '[data-id="close-dialog-button"]',
+  );
+
+  closeDialogButton.addEventListener("click", function () {
+    dialog.close();
+  });
 }
 
 function closeDialogOnOutsideClick() {
