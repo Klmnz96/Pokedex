@@ -81,6 +81,14 @@ function getPokemonDialogTemplate(pokemon) {
   ${getMovesTemplate(pokemon)}
   </div>
 
+  <div class="dialog-nav">
+  <button data-id="prev-button" class="nav-btn" aria-label="Show previous Pokemon">
+  <img src="./assets/icons/arrow-left.svg" alt="" />
+  </button>
+  <button data-id="next-button" class="nav-btn" aria-label="Show next Pokemon">
+  <img src="./assets/icons/arrow-right.svg" alt="" />
+  </button>
+  </div>
   </div>
   `;
 }
