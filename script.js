@@ -1,6 +1,7 @@
 let pokemonList = [];
 let currentOffset = 0;
 let currentDialogIndex = 0;
+let displayedPokemonList = [];
 
 function init() {
   scrollHeader();
@@ -57,6 +58,7 @@ function setLoading(isLoading) {
 }
 
 function renderPokemonList(pokemonList) {
+  displayedPokemonList = pokemonList;
   const pokemonGrid = document.querySelector(".pokemon-grid");
 
   if (pokemonList.length === 0) {
@@ -86,7 +88,7 @@ function setupPokemonDialog() {
 
 function openPokemonDialog(index) {
   currentDialogIndex = index;
-  const pokemon = pokemonList[index];
+  const pokemon = displayedPokemonList[index];
   const dialog = document.querySelector('[data-id="dialog"]');
 
   dialog.innerHTML = getPokemonDialogTemplate(pokemon);
