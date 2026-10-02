@@ -129,6 +129,7 @@ function openPokemonDialog(index) {
   dialog.className = "pokemon-dialog";
   dialog.showModal();
   renderSpeciesDetails(pokemon);
+  renderMoves(pokemon);
   document.body.classList.add("no-scroll");
   setupDialogTabs();
   setupCloseDialogButton(dialog);
@@ -180,6 +181,20 @@ function setupDialogTabs() {
   }
 }
 
+function getMovePowerText(power) {
+  if (power === null) {
+    return "-";
+  }
+  return power;
+}
+
+function getMovePowerClass(power) {
+  if (power === null) {
+    return "power-none";
+  }
+  return getStatBarClass(power);
+}
+
 function getStatBarClass(statValue) {
   if (statValue < 50) {
     return "stat-low";
@@ -197,6 +212,18 @@ function getEvolutionNames(evolutionData) {
   }
 
   return evolutionNames;
+}
+
+async function renderMoves(pokemon) {
+  let movesHtml = "";
+
+  for (const moveEntry of pokemon.moves.slice(0, 10)) {
+    const moveData = await fetchData(moveEntry.move.url);
+    movesHtml += getMoveTemplate(moveData);
+  }
+
+  if (!isPokemonStillShown(pokemon)) return;
+  document.querySelector(".moves-tab").innerHTML = movesHtml;
 }
 
 async function renderEvolutionChain(speciesData, pokemon) {
