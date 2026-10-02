@@ -428,6 +428,24 @@ img[data-id="dialog-image"] {
   border-radius: 8px;
   font-size: var(--text-sm);
   text-transform: capitalize;
+  display: flex;
+  justify-content: space-between;
+}
+
+.move-power {
+  font-weight: 600;
+}
+
+.move-power.stat-low {
+  color: #c53030;
+}
+
+.move-power.stat-high {
+  color: #1f8a5b;
+}
+
+.move-power.power-none {
+  color: var(--color-text-muted);
 }
 
 .evo-chain-tab {
