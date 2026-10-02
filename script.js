@@ -57,6 +57,30 @@ function setLoading(isLoading) {
   loadMoreButton.disabled = isLoading;
 }
 
+function showNeighbourPokemon(step) {
+  let newIndex = currentDialogIndex + step;
+
+  if (newIndex < 0) {
+    newIndex = displayedPokemonList.length - 1;
+  }
+  if (newIndex >= displayedPokemonList.length) {
+    newIndex = 0;
+  }
+  openPokemonDialog(newIndex);
+}
+
+function setupDialogNavButtons() {
+  const prevButton = document.querySelector('[data-id="prev-button"]');
+  const nextButton = document.querySelector('[data-id="next-button"]');
+
+  prevButton.addEventListener("click", function () {
+    showNeighbourPokemon(-1);
+  });
+  nextButton.addEventListener("click", function () {
+    showNeighbourPokemon(1);
+  });
+}
+
 function renderPokemonList(pokemonList) {
   displayedPokemonList = pokemonList;
   const pokemonGrid = document.querySelector(".pokemon-grid");
@@ -98,6 +122,7 @@ function openPokemonDialog(index) {
   document.body.classList.add("no-scroll");
   setupDialogTabs();
   setupCloseDialogButton(dialog);
+  setupDialogNavButtons();
 }
 
 function setupCloseDialogButton(dialog) {
