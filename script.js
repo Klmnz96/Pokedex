@@ -50,6 +50,10 @@ async function fetchData(url) {
   return data;
 }
 
+function isPokemonStillShown(pokemon) {
+  return displayedPokemonList[currentDialogIndex] === pokemon;
+}
+
 function setLoading(isLoading) {
   const loadingScreen = document.querySelector(".loading-screen");
   const loadMoreButton = document.querySelector(".load-more-btn");
@@ -195,7 +199,7 @@ function getEvolutionNames(evolutionData) {
   return evolutionNames;
 }
 
-async function renderEvolutionChain(speciesData) {
+async function renderEvolutionChain(speciesData, pokemon) {
   const evolutionData = await fetchData(speciesData.evolution_chain.url);
   const evolutionNames = getEvolutionNames(evolutionData);
   let evolutionHtml = "";
@@ -206,15 +210,16 @@ async function renderEvolutionChain(speciesData) {
     );
     evolutionHtml += getEvolutionStageTemplate(stagePokemon);
   }
-
+  if (!isPokemonStillShown(pokemon)) return;
   document.querySelector(".evo-chain-tab").innerHTML = evolutionHtml;
 }
 
 async function renderSpeciesDetails(pokemon) {
   const speciesData = await fetchData(pokemon.species.url);
+  if (!isPokemonStillShown(pokemon)) return;
   document.querySelector(".breeding-details").innerHTML =
     getBreedingTemplate(speciesData);
-  renderEvolutionChain(speciesData);
+  renderEvolutionChain(speciesData, pokemon);
 }
 
 function getGenderText(genderRate) {
