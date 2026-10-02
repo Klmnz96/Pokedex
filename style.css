@@ -472,6 +472,29 @@ img[data-id="dialog-image"] {
   margin-bottom: var(--space-2xs);
 }
 
+.dialog-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-xs) var(--space-md) var(--space-md);
+}
+
+.nav-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: transform var(--transition);
+}
+
+.nav-btn:hover {
+  transform: scale(1.1);
+}
+
+.nav-btn img {
+  display: block;
+  width: 40px;
+}
+
 /* Footer */
 .site-footer {
   background: var(--color-accent);
