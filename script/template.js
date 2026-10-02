@@ -78,7 +78,7 @@ function getPokemonDialogTemplate(pokemon) {
   </div>
 
   <div class="moves-tab tab-content hidden">
-  ${getMovesTemplate(pokemon)}
+  Loading moves... 
   </div>
 
   <div class="dialog-nav">
@@ -136,12 +136,11 @@ function getEvolutionStageTemplate(stagePokemon) {
   `;
 }
 
-function getMovesTemplate(pokemon) {
-  let movesHtml = "";
-
-  for (const moveEntry of pokemon.moves.slice(0, 10)) {
-    movesHtml += `<span class="move-badge">${moveEntry.move.name}</span>`;
-  }
-
-  return movesHtml;
+function getMoveTemplate(moveData) {
+  return `
+  <div class="move-badge">
+  <span class="move-name">${moveData.name}</span>
+  <span class="move-power ${getMovePowerClass(moveData.power)}">${getMovePowerText(moveData.power)}</span>
+  </div>
+  `;
 }
