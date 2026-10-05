@@ -276,6 +276,14 @@ function getEggGroupsText(eggGroups) {
   return eggGroupNames.join(", ");
 }
 
+function getAbilitiesText(abilities) {
+  let abilitiesList = [];
+  for (const abilityEntry of abilities) {
+    abilitiesList.push(abilityEntry.ability.name);
+  }
+  return abilitiesList.join(", ");
+}
+
 function scrollHeader() {
   const header = document.querySelector(".site-header");
   if (!header) return;
