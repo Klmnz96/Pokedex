@@ -29,7 +29,12 @@
             placeholder="Search Pokemon"
             class="search-input"
           />
-          <button type="submit" data-id="search-button" class="search-button">
+          <button
+            type="submit"
+            data-id="search-button"
+            class="search-button"
+            aria-label="Search Pokemon"
+          >
             Search
           </button>
         </form>
@@ -41,7 +46,11 @@
       <ul class="pokemon-grid">
         <!--li wird per JS eingebunden-->
       </ul>
-      <dialog data-id="dialog" class="pokemon-dialog"></dialog>
+      <dialog
+        data-id="dialog"
+        class="pokemon-dialog"
+        aria-label="Pokemon-details"
+      ></dialog>
       <div class="loading-screen hidden">
         <img src="./assets/icons/logo.svg" alt="" class="loading-spinner" />
         <p>
@@ -49,7 +58,11 @@
           ><span class="dot">.</span>
         </p>
       </div>
-      <button data-id="load-more-button" class="load-more-btn">
+      <button
+        data-id="load-more-button"
+        class="load-more-btn"
+        aria-label="load more Pokemon"
+      >
         Load more...
       </button>
     </main>
