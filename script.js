@@ -181,6 +181,14 @@ function setupDialogTabs() {
   }
 }
 
+function getTypeBadgesHtml(pokemon) {
+  let typeBadgesHtml = "";
+  for (const typeEntry of pokemon.types) {
+    typeBadgesHtml += getTypeBadgeTemplate(typeEntry.type.name);
+  }
+  return typeBadgesHtml;
+}
+
 function getMovePowerText(power) {
   if (power === null) {
     return "-";
