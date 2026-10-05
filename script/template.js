@@ -4,7 +4,7 @@ function getPokemonCardTemplate(pokemon) {
   return `
     <li>
     <button data-id="card" class="pokemon-card" aria-label="Show details for ${pokemon.name}">
-    <h3 class="pokemon-name">${pokemon.name}</h3>
+    <h2 class="pokemon-name">${pokemon.name}</h2>
     <div class="pokemon-image-wrap ${mainType}">
     <img data-id="card-image" src="${pokemon.sprites.other["official-artwork"].front_default}" alt="${pokemon.name}" />
     </div>
@@ -28,7 +28,7 @@ function getPokemonDialogTemplate(pokemon) {
 
   return `
   <div data-id="overlay-pokemon-name">
-  <button data-id="close-dialog-button">Close</button>
+  <button data-id="close-dialog-button" aria-label="Close dialog">Close</button>
   <div class="dialog-header ${mainType}">
   <img src="./assets/icons/pokeball-dark.svg" alt="" class="dialog-pokeball-bg" />
   <img data-id="dialog-image" src="${pokemon.sprites.other["official-artwork"].front_default}" alt="${pokemon.name}" />
