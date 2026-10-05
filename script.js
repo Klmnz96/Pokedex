@@ -297,28 +297,35 @@ function scrollHeader() {
 function searchPokemon() {
   const searchInput = document.querySelector(".search-input");
   const searchButton = document.querySelector(".search-button");
+  const searchForm = document.querySelector(".search-bar");
 
-  const updateSearchButton = () => {
-    const isValidSearchLength = searchInput.value.length >= 3;
-    searchButton.disabled = !isValidSearchLength;
-
-    if (searchInput.value.length === 0) {
-      renderPokemonList(pokemonList);
-    }
-  };
-
-  updateSearchButton();
-  searchInput.addEventListener("input", updateSearchButton);
-
-  searchButton.addEventListener("click", function () {
-    const searchTerm = searchInput.value.toLowerCase();
-
-    const filteredPokemonList = pokemonList.filter(function (pokemon) {
-      return pokemon.name.toLowerCase().includes(searchTerm);
-    });
-
-    renderPokemonList(filteredPokemonList);
+  updateSearchButton(searchInput, searchButton);
+  searchInput.addEventListener("input", function () {
+    updateSearchButton(searchInput, searchButton);
   });
+  searchForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    filterPokemon(searchInput.value);
+  });
+}
+
+function updateSearchButton(searchInput, searchButton) {
+  const isValidSearchLength = searchInput.value.length >= 3;
+  searchButton.disabled = !isValidSearchLength;
+
+  if (searchInput.value.length === 0) {
+    renderPokemonList(pokemonList);
+  }
+}
+
+function filterPokemon(searchTerm) {
+  const lowerSearchTerm = searchTerm.toLowerCase();
+
+  const filteredPokemonList = pokemonList.filter(function (pokemon) {
+    return pokemon.name.toLowerCase().includes(lowerSearchTerm);
+  });
+
+  renderPokemonList(filteredPokemonList);
 }
 
 init();
