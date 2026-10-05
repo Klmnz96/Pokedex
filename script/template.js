@@ -25,11 +25,6 @@ function getTypeBadgeTemplate(typeName) {
 
 function getPokemonDialogTemplate(pokemon) {
   const mainType = pokemon.types[0].type.name;
-  let abilitiesList = [];
-  for (const abilityEntry of pokemon.abilities) {
-    abilitiesList.push(abilityEntry.ability.name);
-  }
-  const abilitiesText = abilitiesList.join(", ");
 
   return `
   <div data-id="overlay-pokemon-name">
@@ -62,7 +57,7 @@ function getPokemonDialogTemplate(pokemon) {
   </div>
   <div class="detail-row">
   <span class="detail-label">Abilities:</span>
-  <span class="detail-value">${abilitiesText}</span>
+  <span class="detail-value">${getAbilitiesText(pokemon.abilities)}</span>
   </div>
   <h3 class="breeding-title">Breeding</h3>
   <div class="breeding-details">Loading breeding info...</div>
