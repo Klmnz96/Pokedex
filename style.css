@@ -281,7 +281,8 @@ img[data-id="dialog-image"] {
   background: rgba(0, 0, 0, 0.3);
   color: var(--color-surface);
   border-radius: 999px;
-  padding: var(--space-3xs) var(--space-xs);
+  font-size: var(--text-sm);
+  padding: var(--space-2xs) var(--space-sm);
 }
 
 .dialog-header .pokemon-name {
@@ -561,4 +562,121 @@ img[data-id="dialog-image"] {
 
 .hidden {
   display: none;
+}
+
+@media (max-width: 600px) {
+  .logo-text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .header-inner {
+    gap: var(--space-xs);
+  }
+
+  .search-bar {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .search-input {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .search-button {
+    padding: var(--space-2xs) var(--space-sm);
+  }
+
+  .dialog-header {
+    min-height: 200px;
+    padding: var(--space-sm);
+  }
+
+  .dialog-tabs {
+    padding: var(--space-xs) var(--space-2xs) 0;
+    justify-content: space-between;
+  }
+
+  img[data-id="dialog-image"] {
+    width: 40%;
+  }
+
+  .dialog-pokeball-bg {
+    width: 70%;
+  }
+
+  .tab-btn {
+    padding: var(--space-2xs) var(--space-3xs);
+    white-space: nowrap;
+  }
+
+  .tab-content {
+    height: 280px;
+    padding: var(--space-sm);
+  }
+
+  .detail-row {
+    grid-template-columns: 125px 1fr;
+    gap: var(--space-2xs);
+  }
+
+  .stats-tab .detail-row {
+    grid-template-columns: 1fr auto;
+  }
+
+  .stat-bar {
+    grid-column: 1 / -1;
+  }
+
+  .evo-chain-tab {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+  }
+
+  .evo-stage {
+    flex-direction: row;
+    gap: var(--space-xs);
+  }
+
+  .evo-stage img {
+    width: 56px;
+  }
+
+  .evo-stage + .evo-stage::before {
+    content: "↓";
+    right: auto;
+    left: 28px;
+    top: auto;
+    bottom: 100%;
+    margin: 0;
+    transform: translateX(-50%);
+  }
+
+  .loading-spinner {
+    width: 120px;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--space-xs);
+    padding: var(--space-md) 0;
+    text-align: center;
+  }
+}
+
+@media (max-width: 360px) {
+  .search-button {
+    padding: var(--space-2xs) var(--space-xs);
+  }
+
+  .search-input {
+    padding: var(--space-2xs) var(--space-xs);
+  }
 }
