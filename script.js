@@ -145,6 +145,7 @@ function openPokemonDialog(index) {
   renderMoves(pokemon);
   document.body.classList.add("no-scroll");
   setupDialogTabs();
+  setupEvolutionTab(pokemon);
   setupCloseDialogButton(dialog);
   setupDialogNavButtons();
 }
@@ -247,7 +248,8 @@ async function renderMoves(pokemon) {
   document.querySelector(".moves-tab").innerHTML = movesHtml;
 }
 
-async function renderEvolutionChain(speciesData, pokemon) {
+async function renderEvolutionChain(pokemon) {
+  const speciesData = await fetchData(pokemon.species.url);
   const evolutionData = await fetchData(speciesData.evolution_chain.url);
   const evolutionNames = getEvolutionNames(evolutionData);
   let evolutionHtml = "";
@@ -267,7 +269,14 @@ async function renderSpeciesDetails(pokemon) {
   if (!isPokemonStillShown(pokemon)) return;
   document.querySelector(".breeding-details").innerHTML =
     getBreedingTemplate(speciesData);
-  renderEvolutionChain(speciesData, pokemon);
+}
+
+function setupEvolutionTab(pokemon) {
+  const evolutionTabButton = document.querySelector(".evo-tab-btn");
+
+  evolutionTabButton.addEventListener("click", function () {
+    renderEvolutionChain(pokemon);
+  });
 }
 
 function getGenderText(genderRate) {
