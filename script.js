@@ -39,6 +39,19 @@ async function loadMorePokemon() {
   });
 }
 
+function setSearchMode(isSearching) {
+  const loadMoreButton = document.querySelector('[data-id="load-more-button"]');
+  const backButton = document.querySelector(".back-btn");
+
+  if (isSearching) {
+    loadMoreButton.classList.add("hidden");
+    backButton.classList.remove("hidden");
+  } else {
+    loadMoreButton.classList.remove("hidden");
+    backButton.classList.add("hidden");
+  }
+}
+
 async function fetchData(url) {
   if (fetchCache[url]) {
     return fetchCache[url];
@@ -300,6 +313,7 @@ function searchPokemon() {
   const searchForm = document.querySelector(".search-bar");
 
   updateSearchButton(searchInput, searchButton);
+  setupBackButton(searchInput, searchButton);
   searchInput.addEventListener("input", function () {
     updateSearchButton(searchInput, searchButton);
   });
@@ -309,12 +323,22 @@ function searchPokemon() {
   });
 }
 
+function setupBackButton(searchInput, searchButton) {
+  const backButton = document.querySelector(".back-btn");
+
+  backButton.addEventListener("click", function () {
+    searchInput.value = "";
+    updateSearchButton(searchInput, searchButton);
+  });
+}
+
 function updateSearchButton(searchInput, searchButton) {
   const isValidSearchLength = searchInput.value.length >= 3;
   searchButton.disabled = !isValidSearchLength;
 
   if (searchInput.value.length === 0) {
     renderPokemonList(pokemonList);
+    setSearchMode(false);
   }
 }
 
@@ -326,6 +350,7 @@ function filterPokemon(searchTerm) {
   });
 
   renderPokemonList(filteredPokemonList);
+  setSearchMode(true);
 }
 
 init();
