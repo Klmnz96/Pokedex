@@ -16,7 +16,7 @@ function init() {
 async function fetchPokemon(offset) {
   setLoading(true);
   const listResponse = await fetch(
-    `https://pokeapi.co/api/v2/pokemon?limit=40&offset=${offset}`,
+    `https://pokeapi.co/api/v2/pokemon?limit=20&offset=${offset}`,
   );
   const listData = await listResponse.json();
 
@@ -26,7 +26,7 @@ async function fetchPokemon(offset) {
     pokemonList.push(detailData);
   }
 
-  currentOffset += 40;
+  currentOffset += 20;
   renderPokemonList(pokemonList);
   setLoading(false);
 }
