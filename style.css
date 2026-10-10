@@ -85,6 +85,10 @@
 }
 
 /* Main */
+main {
+  flex: 1;
+}
+
 .load-more-btn {
   display: block;
   margin: var(--space-lg) auto;
